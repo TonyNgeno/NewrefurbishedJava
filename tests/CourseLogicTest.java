@@ -2,10 +2,13 @@
 import com.tonyngeno.logic.CourseLogic;
 import com.tonyngeno.logic.CourseLogicI;
 import com.tonyngeno.model.Course;
+import com.tonyngeno.model.Student;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseLogicTest {
     CourseLogicI courseLogicI;
@@ -44,11 +47,23 @@ public class CourseLogicTest {
     }
 
     @Test
-    public void findAll()  throws SQLException {
+    public void findAll() throws SQLException, ClassNotFoundException {
+        Course course =new Course();
+        List<Course> find = new ArrayList<>() {};
+        find=courseLogicI.findAll();
+        if(find.isEmpty());
+        Assert.assertFalse(false);
+        course.setCourseId(2020);
+        Course search=courseLogicI.find(course.getCourseId());
+        Assert.assertEquals(search.getCourseId(),course.getCourseId());
 
     }
 
     @Test
-    public void find()  throws SQLException {
+    public void find() throws SQLException, ClassNotFoundException {
+        Course course=new Course();
+        course.setCourseId(2020);
+        Course search=courseLogicI.find(course.getCourseId());
+        Assert.assertEquals(search.getCourseId(),course.getCourseId());
     }
 }

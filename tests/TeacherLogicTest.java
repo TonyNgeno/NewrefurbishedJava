@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -54,11 +56,23 @@ public class TeacherLogicTest {
     }
 
     @Test
-    public void findAll() {
+    public void findAll() throws SQLException {
+        Teacher teacher =new Teacher();
+        List<Teacher> find=new ArrayList<>() {};
+        find=teacherLogicI.findAll();
+        if(find.isEmpty());
+        Assert.assertFalse(false);
+        teacher.setStaffNo("c2020");
+        Teacher search=teacherLogicI.find(teacher.getStaffNo());
+        Assert.assertEquals(search.getStaffNo(),teacher.getStaffNo());
     }
 
     @Test
-    public void find() {
+    public void find() throws SQLException {
+        Teacher teacher = new Teacher();
+        teacher.setStaffNo("e234");
+        Teacher search=teacherLogicI.find(teacher.getStaffNo());
+        Assert.assertEquals(search.getStaffNo(),teacher.getStaffNo());
     }
 
 }

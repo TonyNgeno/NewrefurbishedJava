@@ -80,7 +80,7 @@ public class StudentLogic implements StudentLogicI {
         PreparedStatement preparedStatement = this
                 .dbConnectionI
                 .getConnection()
-                .prepareStatement("SELECT * FROM students WHERE id = ?");
+                .prepareStatement("SELECT * FROM students WHERE registrationNo = ?");
         preparedStatement.setLong(1, id);
         ResultSet resultSet = dbConnectionI.executeQuery(preparedStatement);
         if(resultSet.next()){

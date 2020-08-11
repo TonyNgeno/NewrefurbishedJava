@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentLogicTest {
     StudentLogicI studentLogicI;
@@ -55,10 +57,22 @@ public class StudentLogicTest {
 
     @Test
     public void findAll()  throws SQLException {
+        Student student=new Student();
+        List<Student> find=new ArrayList<>() {};
+        find=studentLogicI.findAll();
+        if(find.isEmpty());
+            Assert.assertFalse(false);
+        student.setRegistrationNo("c2020");
+        Student search=studentLogicI.find(student.getRegistrationNo());
+        Assert.assertEquals(search.getRegistrationNo(),student.getRegistrationNo());
 
     }
 
     @Test
     public void find()  throws SQLException {
+        Student student=new Student();
+        student.setRegistrationNo("234");
+        Student search=studentLogicI.find(student.getRegistrationNo());
+        Assert.assertEquals(search.getRegistrationNo(),student.getRegistrationNo());
     }
 }
